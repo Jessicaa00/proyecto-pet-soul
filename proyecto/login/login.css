@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    background-color: #efefef;
+}
+
+body {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.login-container {
+    display: flex;
+    width: 800px;
+    height: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+ position: relative;
+    /* Para posicionar el logo */
+
+}
+#iniciar-sesion-h1 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 70px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Izquierda: formulario */
+.form-section {
+    /* background-color: #e7e7e7; /* Gris claro */
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Centra verticalmente */
+}
+
+
+
+form {
+ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#form-login {
+    width: 100%;
+    height: 100%;
+    
+}
+
+#login-form {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    /* Centra horizontalmente */
+    align-items: center;
+    /* Centra verticalmente */
+}
+
+form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+label {
+    margin: 0px 0px 10px 0;/*[arriba] [derecha] [abajo] [izquierda]*/
+    font-weight: bold;
+}
+
+input {
+     margin: 0 0 50px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 14px;
+    width: 70%;
+    background-color: white;
+}
+#errorMsg {
+  color: red;
+  font-size: 14px;
+  display:none; /* Oculto por defecto */
+}
+button {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #ccc;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #bbb;
+}
+
+/* Derecha: imagen */
+.image-section {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Mantiene proporción y recorta */
+    object-position: center;
+    /* Centra la parte visible */
+}
+
+/* Logo en la imagen */
+.logo {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 80px;
+    z-index: 2;
+}
+.logo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.logo, .logo img {
+    background: transparent;
+}
