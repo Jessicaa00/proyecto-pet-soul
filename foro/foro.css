@@ -1,0 +1,88 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ===== HEADER ===== */
+.navbar-custom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background:#2e7d32;
+    padding: 10px 20px;
+    height: 70px;  
+    z-index: 1000;
+}
+
+.logo {
+    position: relative;
+    height: 100%;
+}
+
+.logo img {
+    height: 80px;     
+    width: auto;
+    position: absolute; 
+    top: 70%;         
+    transform: translateY(-50%);
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+}
+.menu a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.menu a:hover {
+    color: #f4c542;  
+}
+
+.menu a.active {
+    color: #ffd740;
+    font-weight: bold;
+}
+
+
+.icons {
+    display: flex;
+    gap: 23px;
+    font-size: 1.5rem;
+}
+
+.icons i {
+    color: #ffffff;  
+    transition: color 0.3s;
+}
+
+.icons i:hover {
+    color: #f4c542;  
+}
+
+
+/* BOTÓN AÑADIR PUBLICACIÓN */
+#showPostForm {
+    border-radius: 5px;
+}
+
+/* FORMULARIO */
+#postFormContainer {
+    border-radius: 10px;
+}
+
+/* PUBLICACIONES */
+#postsContainer .card {
+    border-radius: 10px;
+}
+
+#postsContainer .card-body {
+    padding: 15px;
+}
+
+#postsContainer .badge {
+    font-size: 0.75rem;
+    margin-left: 5px;
+}

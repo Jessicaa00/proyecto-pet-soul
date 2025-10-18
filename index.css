@@ -1,0 +1,271 @@
+/* ===== HEADER ===== */
+.navbar-custom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background:#2e7d32;
+    padding: 10px 20px;
+    height: 70px;  
+    z-index: 1000;
+    margin-bottom: 0;
+}
+
+.logo {
+    position: relative;
+    height: 100%;
+}
+
+.logo img {
+    height: 80px;     
+    width: auto;
+    position: absolute; 
+    top: 70%;         
+    transform: translateY(-50%);
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+}
+.menu a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.menu a:hover {
+    color: #f4c542;  
+}
+
+.menu a.active {
+    color: #ffd740;
+    font-weight: bold;
+}
+
+
+.icons {
+    display: flex;
+    gap: 23px;
+    font-size: 1.5rem;
+}
+
+.icons i {
+    color: #ffffff;  
+    transition: color 0.3s;
+}
+
+.icons i:hover {
+    color: #f4c542;  
+}
+
+.hero {
+    position: relative;
+    min-height: 250px;
+    background: url('https://plus.unsplash.com/premium_photo-1664371674939-d3ff57800903?q=80&w=869&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')  center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+}
+
+.hero h2 {
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    font-weight: bold;
+    color: white;
+    font-size: 32px;
+    text-align: center;
+}
+
+.hero-img {
+    height: 250px;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    background: rgba(0,0,0,0.35);
+}
+
+/* tarjetas*/
+.pet-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 100%;
+    min-height: 330px;
+}
+
+.pet-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.pet-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    padding: 15px;
+    text-align: center;
+}
+
+.pet-card:hover .card-overlay {
+    opacity: 1;
+}
+
+.card-overlay ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.card-overlay ul li {
+    margin: 5px 0;
+    font-size: 0.95rem;
+}
+
+.card-overlay button {
+    border-radius: 25px;
+    padding: 8px 20px;
+    font-weight: bold;
+    background-color: #ff6b6b;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.card-overlay button:hover {
+    background-color: #2ecc71;
+}
+
+.btn-comun {
+    padding: 10px 20px;
+    background-color: lightgray;
+    color: black;
+    text-decoration: none;
+    display: inline-block; 
+    border-radius: 4px;
+    font-weight: normal;
+    transition: background-color 0.3s;
+}
+
+.btn-comun:hover {
+    background-color: gray;
+    color: white;
+}
+
+.info-section-clasico {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 25px;
+  padding: 60px 20px;
+  background-color: #fdfdfd;
+}
+
+.info-card {
+  width: 90%;
+  max-width: 600px;
+  background-color: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+}
+
+.info-card h3 {
+  font-family: 'Arial', sans-serif; 
+  font-size: 1.5rem;
+  color: #333; 
+  margin-bottom: 10px;
+}
+
+.info-card p {
+  font-family: 'Arial', sans-serif;
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.btn-vermas {
+  display: inline-block;
+  background-color: #f59e0b; 
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+}
+
+
+.footer {
+    background: #777;
+    color: #fff;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.footer-logo img {
+    height: 50px;
+}
+
+.footer-menu a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.95rem;
+}
+
+.footer-menu a:hover {
+    text-decoration: underline;
+}
+
+.footer-social a {
+    color: white;
+    margin: 0 8px;
+    font-size: 1.2rem;
+}
+
+.footer-copy {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #e9e3e3;
+}
+
+body {
+    padding-top: 70px; 
+}
+
