@@ -16,7 +16,7 @@ form.addEventListener('submit', function (e) {
         nombre: document.getElementById('username').value,
         email: document.getElementById('email').value,
         password: document.getElementById('password').value,
-        mostrarDatos: incluirDatos,
+        mostrarDatos: incluirDatos.checked,
         direccion: direccion.value,
         telefono: telefono.value
     };
