@@ -14,7 +14,7 @@
     position: relative;
     height: 100%;
 }
-
+                                                                                                                                                                                                                             
 .logo img {
     height: 80px;     
     width: auto;
@@ -22,22 +22,22 @@
     top: 70%;         
     transform: translateY(-50%);
 }
-
+            
 .menu {
     display: flex;
     gap: 20px;
 }
 .menu a {
     text-decoration: none;
-    color: #ffffff;
+    color: #ffffff;                   
     font-weight: 500;
 }
 
-.menu a:hover {
-    color: #f4c542;  
+.menu a:hover {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+    color: #f4c542;              
 }
-
-.menu a.active {
+                                                                             
+.menu a.active {                                   
     color: #ffd740;
     font-weight: bold;
 }
