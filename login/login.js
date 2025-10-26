@@ -6,10 +6,10 @@ const errorMsg = document.getElementById("errorMsg");
 form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const usuario = document.getElementById("username").value.trim();
+    const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
 
-    if (!usuario || !password) {
+    if (!email || !password) {
         alert("Completa todos los campos");
         return;
     }
@@ -18,14 +18,14 @@ form.addEventListener("submit", function (e) {
     fetch('https://petsoulbackend.ngrok.app/api/auth/login',{
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ usuario: usuario, password: password })
+        body: JSON.stringify({ email: email, password: password })
     })
     .then(res => res.json())
     .then(data => {
         alert(data.message); // alerta original
 
         if (data.success) { // login correcto
-            localStorage.setItem("usuario", usuario); // guardar usuario
+            localStorage.setItem("email", email); // guardar email
             window.location.href = "../index.html";    // redirigir al inicio
         } else {
             if (errorMsg) errorMsg.style.display = "block"; // mostrar error en HTML
@@ -40,9 +40,9 @@ form.addEventListener("submit", function (e) {
 // Mostrar la inicial en index.html
 window.addEventListener("DOMContentLoaded", () => {
     const perfilDiv = document.getElementById("perfil");
-    const usuario = localStorage.getItem("usuario");
+    const email = localStorage.getItem("email");
 
-    if (usuario && perfilDiv) {
-        perfilDiv.textContent = usuario.charAt(0).toUpperCase();
+    if (email && perfilDiv) {
+        perfilDiv.textContent = email.charAt(0).toUpperCase();
     }
 });
