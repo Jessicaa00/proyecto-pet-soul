@@ -1,12 +1,13 @@
-const mostrarDatos = document.getElementById('mostrarDatos');
+
 const direccion = document.getElementById('direccion');
 const telefono = document.getElementById('telefono');
+const confirmPassword = document.getElementById('confirm-password');
 const form = document.getElementById('form-registrarse');
 
-let incluirDatos = mostrarDatos.checked;
+let privacidad = mostrarDatos.checked;
 
 mostrarDatos.addEventListener('change', () => {
-    incluirDatos = mostrarDatos.checked;
+    privacidad = mostrarDatos.checked;
 });
 
 form.addEventListener('submit', function (e) {
@@ -16,7 +17,8 @@ form.addEventListener('submit', function (e) {
         nombre: document.getElementById('username').value,
         email: document.getElementById('email').value,
         password: document.getElementById('password').value,
-        mostrarDatos: incluirDatos,
+        confirmPassword: confirmPassword.value,
+        mostrarDatos: privacidad,
         direccion: direccion.value,
         telefono: telefono.value
     };
