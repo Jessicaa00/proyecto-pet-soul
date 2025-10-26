@@ -15,10 +15,10 @@ form.addEventListener("submit", function (e) {
     }
 
     // Consulta al backend
-    fetch('https://petsoulbackend.ngrok.app/api/auth/login', {
+    fetch('https://petsoulbackend.ngrok.app/api/auth/login',{
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: usuario, password: password })
+        body: JSON.stringify({ usuario: usuario, password: password })
     })
     .then(res => res.json())
     .then(data => {
