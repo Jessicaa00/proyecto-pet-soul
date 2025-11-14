@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donar - Pet Soul</title>
+    <link rel="stylesheet" href="donar.css">
+</head>
+<body>
+    <div class="donation-container">
+
+        <a href="../institucion/institucion.html" class="back-arrow">&#8592; Volver</a>
+
+        <form id="form-donar">
+            <h1>Hacer una Donación</h1>
+
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="monto">Monto a donar (UYU):</label>
+            <input type="number" id="monto" name="monto" min="50" required>
+
+            <label for="metodo">Método de pago:</label>
+            <select id="metodo" name="metodo" required>
+                <option value="">Seleccionar...</option>
+                <option value="paypal">PayPal</option>
+                <option value="mercadopago">MercadoPago</option>
+            </select>
+
+            <div id="successMsg">Gracias por tu donación 💚</div>
+
+            <button type="submit">Donar</button>
+        </form>
+    </div>
+
+    <script src="donar.js"></script>
+</body>
+</html>

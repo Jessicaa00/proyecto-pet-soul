@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Institución - Pet Soul</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="paneladmin.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="navbar-custom fixed-top d-flex justify-content-between align-items-center px-4">
+        <div class="logo">
+            <img src="../logo/petSoulSVG.svg" alt="Logo Pet Soul">
+        </div>
+
+        <!-- Botón hamburguesa -->
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menú">
+            <i class="bi bi-list"></i>
+        </button>
+
+        <nav class="menu d-flex gap-3">
+            <a href="../index.html">Inicio</a>
+            <a href="../mascotas/mascota.html">Mascota</a>
+            <a href="../foro/foro.html">Foro</a>
+            <a href="../institucion/institucion.html">Institución</a>
+            <a href="../casos exito/casosexito.html">Casos de Éxito</a>
+        </nav>
+        <div class="icons d-flex align-items-center gap-3">
+            <div class="dropdown">
+                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-chat-dots fs-4"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end p-2" style="min-width: 250px;">
+                    <li><strong class="dropdown-header">Mensajes</strong></li>
+                    <li><a class="dropdown-item" href="#">Nueva solicitud de adopción</a></li>
+                    <li><a class="dropdown-item" href="#">Consulta sobre Max</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item text-center" href="#">Ver todos</a></li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-bell fs-4 position-relative"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end p-2" style="min-width: 250px;">
+                    <li><strong class="dropdown-header">Notificaciones</strong></li>
+                    <li><a class="dropdown-item" href="#">Nueva mascota agregada</a></li>
+                    <li><a class="dropdown-item" href="#">Adopción aprobada</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item text-center" href="#">Ver todas</a></li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-person-circle fs-4"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#">Refugio Esperanza Animal</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Configuración</a></li>
+                    <li><a class="dropdown-item" href="../index.html"><i class="bi bi-box-arrow-left"></i> Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVEGACIÓN TABS -->
+    <div class="container-fluid">
+        <div class="alert alert-success d-flex align-items-center mb-3" role="alert">
+            <i class="bi bi-building me-2"></i>
+            <strong>Panel de Administración:</strong>&nbsp;Refugio Esperanza Animal
+        </div>
+        <ul class="nav-tabs-admin">
+            <li><a href="#" class="active" data-section="mascotas"><i class="bi bi-heart"></i> Mascotas</a></li>
+            <li><a href="#" data-section="estadisticas"><i class="bi bi-graph-up"></i> Estadísticas</a></li>
+            <li><a href="#" data-section="adopciones"><i class="bi bi-clipboard-check"></i> Adopciones</a></li>
+            <li><a href="#" data-section="productos"><i class="bi bi-cart"></i> Productos/Servicios</a></li>
+            <li><a href="#" data-section="historial"><i class="bi bi-clock-history"></i> Historial</a></li>
+        </ul>
+    </div>
+
+    <!-- CONTENIDO -->
+    <div class="container-fluid mt-4">
+
+        <!-- MASCOTAS -->
+        <section id="mascotas" class="section-content active">
+            <div class="section-header">
+                <h3 class="section-title">Gestión de Mascotas</h3>
+                <button class="btn-verde" data-bs-toggle="modal" data-bs-target="#addMascotaModal">
+                    <i class="bi bi-plus-circle"></i> Agregar Mascota
+                </button>
+            </div>
+
+            <div class="card-simple">
+                <table class="table-simple">
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Nombre</th>
+                            <th>Especie</th>
+                            <th>Edad</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" class="img-table"></td>
+                            <td>Max</td>
+                            <td>Perro</td>
+                            <td>2 años</td>
+                            <td><span class="badge-verde">Disponible</span></td>
+                            <td>
+                                <button class="btn-icon" title="Editar"><i class="bi bi-pencil"></i></button>
+                                <button class="btn-icon" title="Eliminar"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" class="img-table"></td>
+                            <td>Luna</td>
+                            <td>Gato</td>
+                            <td>1 año</td>
+                            <td><span class="badge-amarillo">En proceso</span></td>
+                            <td>
+                                <button class="btn-icon" title="Editar"><i class="bi bi-pencil"></i></button>
+                                <button class="btn-icon" title="Eliminar"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" class="img-table"></td>
+                            <td>Bobby</td>
+                            <td>Perro</td>
+                            <td>5 años</td>
+                            <td><span class="badge-gris">Adoptado</span></td>
+                            <td>
+                                <button class="btn-icon" title="Ver"><i class="bi bi-eye"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ESTADÍSTICAS -->
+        <section id="estadisticas" class="section-content">
+            <h3 class="section-title">Estadísticas</h3>
+
+            <div class="stats-grid">
+                <!-- Adopciones -->
+                <div class="card-simple">
+                    <h5><i class="bi bi-clipboard-check"></i> Estadísticas de Adopciones</h5>
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <i class="bi bi-calendar"></i>
+                                <h4>48</h4>
+                                <p>Este Año</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <i class="bi bi-calendar-month"></i>
+                                <h4>12</h4>
+                                <p>Este Mes</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <i class="bi bi-heart-fill"></i>
+                                <h4>28</h4>
+                                <p>Perros</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <i class="bi bi-heart"></i>
+                                <h4>20</h4>
+                                <p>Gatos</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <i class="bi bi-x-circle"></i>
+                                <h4>5</h4>
+                                <p>Canceladas</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <i class="bi bi-slash-circle"></i>
+                                <h4>3</h4>
+                                <p>Denegadas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Consultas -->
+                <div class="card-simple">
+                    <h5><i class="bi bi-chat-dots"></i> Estadísticas de Consultas</h5>
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <i class="bi bi-calendar"></i>
+                                <h4>156</h4>
+                                <p>Este Año</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <i class="bi bi-calendar-month"></i>
+                                <h4>34</h4>
+                                <p>Este Mes</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <i class="bi bi-heart-fill"></i>
+                                <h4>89</h4>
+                                <p>Por Perros</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <i class="bi bi-heart"></i>
+                                <h4>67</h4>
+                                <p>Por Gatos</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <i class="bi bi-clipboard-pulse"></i>
+                                <h4>42</h4>
+                                <p>Estado Salud</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <i class="bi bi-cake"></i>
+                                <h4>78</h4>
+                                <p>Por Edad</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADOPCIONES -->
+        <section id="adopciones" class="section-content">
+            <h3 class="section-title">Proceso de Adopciones</h3>
+
+            <div class="kanban-container">
+                <!-- Aprobadas -->
+                <div class="kanban-column">
+                    <h5><i class="bi bi-check-circle"></i> Aprobadas (8)</h5>
+                    <div class="kanban-card">
+                        <h6>Max</h6>
+                        <p><i class="bi bi-person"></i> Juan Pérez</p>
+                        <p><i class="bi bi-envelope"></i> juan@email.com</p>
+                        <p><i class="bi bi-calendar"></i> 25/10/2025</p>
+                        <span class="badge-verde">Aprobada</span>
+                    </div>
+                    <div class="kanban-card">
+                        <h6>Luna</h6>
+                        <p><i class="bi bi-person"></i> María González</p>
+                        <p><i class="bi-envelope"></i> maria@email.com</p>
+                        <p><i class="bi bi-calendar"></i> 23/10/2025</p>
+                        <span class="badge-verde">Aprobada</span>
+                    </div>
+                </div>
+
+                <!-- En Proceso -->
+                <div class="kanban-column">
+                    <h5><i class="bi bi-clock"></i> En Proceso (5)</h5>
+                    <div class="kanban-card">
+                        <h6>Rocky</h6>
+                        <p><i class="bi bi-person"></i> Carlos Rodríguez</p>
+                        <p><i class="bi bi-envelope"></i> carlos@email.com</p>
+                        <p><i class="bi bi-calendar"></i> 27/10/2025</p>
+                        <span class="badge-amarillo">En proceso</span>
+                    </div>
+                    <div class="kanban-card">
+                        <h6>Mia</h6>
+                        <p><i class="bi bi-person"></i> Ana Martínez</p>
+                        <p><i class="bi bi-envelope"></i> ana@email.com</p>
+                        <p><i class="bi bi-calendar"></i> 26/10/2025</p>
+                        <span class="badge-amarillo">En proceso</span>
+                    </div>
+                </div>
+
+                <!-- Solicitudes -->
+                <div class="kanban-column">
+                    <h5><i class="bi bi-inbox"></i> Solicitudes (12)</h5>
+                    <div class="kanban-card">
+                        <h6>Toby</h6>
+                        <p><i class="bi bi-person"></i> Pedro López</p>
+                        <p><i class="bi bi-envelope"></i> pedro@email.com</p>
+                        <p><i class="bi bi-calendar"></i> 29/10/2025</p>
+                        <button class="btn-icon btn-mensaje" title="Enviar mensaje">
+                            <i class="bi bi-chat-dots"></i> Mensaje
+                        </button>
+                    </div>
+                    <div class="kanban-card">
+                        <h6>Simba</h6>
+                        <p><i class="bi bi-person"></i> Laura Torres</p>
+                        <p><i class="bi bi-envelope"></i> laura@email.com</p>
+                        <p><i class="bi bi-calendar"></i> 28/10/2025</p>
+                        <button class="btn-icon btn-mensaje" title="Enviar mensaje">
+                            <i class="bi bi-chat-dots"></i> Mensaje
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCTOS Y SERVICIOS -->
+        <section id="productos" class="section-content">
+            <div class="section-header">
+                <h3 class="section-title">Productos y Servicios</h3>
+                <button class="btn-verde" data-bs-toggle="modal" data-bs-target="#addProductoModal">
+                    <i class="bi bi-plus-circle"></i> Agregar Producto/Servicio
+                </button>
+            </div>
+
+            <div class="card-simple">
+                <table class="table-simple">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Precio</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" class="img-table"></td>
+                            <td>Alimento Premium 15kg</td>
+                            <td><span class="badge-verde">Producto</span></td>
+                            <td>$850</td>
+                            <td><span class="badge-verde">Disponible</span></td>
+                            <td>
+                                <button class="btn-icon" title="Editar"><i class="bi bi-pencil"></i></button>
+                                <button class="btn-icon" title="Eliminar"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" class="img-table"></td>
+                            <td>Baño y Corte</td>
+                            <td><span class="badge-amarillo">Servicio</span></td>
+                            <td>$650</td>
+                            <td><span class="badge-verde">Disponible</span></td>
+                            <td>
+                                <button class="btn-icon" title="Editar"><i class="bi bi-pencil"></i></button>
+                                <button class="btn-icon" title="Eliminar"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50" class="img-table"></td>
+                            <td>Consulta Veterinaria</td>
+                            <td><span class="badge-amarillo">Servicio</span></td>
+                            <td>$1200</td>
+                            <td><span class="badge-verde">Disponible</span></td>
+                            <td>
+                                <button class="btn-icon" title="Editar"><i class="bi bi-pencil"></i></button>
+                                <button class="btn-icon" title="Eliminar"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- HISTORIAL -->
+        <section id="historial" class="section-content">
+            <h3 class="section-title">Historial General</h3>
+
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="card-simple">
+                        <h5><i class="bi bi-heart-fill"></i> Historial de Mascotas</h5>
+                        <table class="table-simple">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Mascota</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>28/10/2025</td>
+                                    <td>Max</td>
+                                    <td>Agregado</td>
+                                </tr>
+                                <tr>
+                                    <td>27/10/2025</td>
+                                    <td>Luna</td>
+                                    <td>Modificado</td>
+                                </tr>
+                                <tr>
+                                    <td>25/10/2025</td>
+                                    <td>Bobby</td>
+                                    <td>Adoptado</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card-simple">
+                        <h5><i class="bi bi-clipboard-check"></i> Historial de Adopciones</h5>
+                        <table class="table-simple">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Mascota</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>28/10/2025</td>
+                                    <td>Rocky → Carlos R.</td>
+                                    <td><span class="badge-amarillo">En proceso</span></td>
+                                </tr>
+                                <tr>
+                                    <td>25/10/2025</td>
+                                    <td>Max → Juan P.</td>
+                                    <td><span class="badge-verde">Aprobada</span></td>
+                                </tr>
+                                <tr>
+                                    <td>22/10/2025</td>
+                                    <td>Simba → Luis M.</td>
+                                    <td><span class="badge-rojo">Cancelada</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card-simple">
+                        <h5><i class="bi bi-cart"></i> Historial de Productos</h5>
+                        <table class="table-simple">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Producto</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>27/10/2025</td>
+                                    <td>Alimento Premium</td>
+                                    <td>Agregado</td>
+                                </tr>
+                                <tr>
+                                    <td>26/10/2025</td>
+                                    <td>Collar antipulgas</td>
+                                    <td>Vendido</td>
+                                </tr>
+                                <tr>
+                                    <td>25/10/2025</td>
+                                    <td>Juguete mordedor</td>
+                                    <td>Vendido</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card-simple">
+                        <h5><i class="bi bi-gift"></i> Historial de Donaciones</h5>
+                        <table class="table-simple">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Donante</th>
+                                    <th>Monto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>28/10/2025</td>
+                                    <td>Anónimo</td>
+                                    <td>$500</td>
+                                </tr>
+                                <tr>
+                                    <td>27/10/2025</td>
+                                    <td>María González</td>
+                                    <td>$1000</td>
+                                </tr>
+                                <tr>
+                                    <td>25/10/2025</td>
+                                    <td>Carlos López</td>
+                                    <td>$750</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- MODAL AGREGAR MASCOTA -->
+    <div class="modal fade" id="addMascotaModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar Nueva Mascota</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formMascota">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Especie</label>
+                            <select class="form-select" required>
+                                <option value="">Seleccionar...</option>
+                                <option value="perro">Perro</option>
+                                <option value="gato">Gato</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Edad</label>
+                            <input type="text" class="form-control" placeholder="ej: 2 años">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Género</label>
+                            <select class="form-select">
+                                <option value="macho">Macho</option>
+                                <option value="hembra">Hembra</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Estado de Salud</label>
+                            <select class="form-select">
+                                <option value="saludable">Saludable</option>
+                                <option value="tratamiento">En tratamiento</option>
+                                <option value="especial">Necesidades especiales</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Foto</label>
+                            <input type="file" class="form-control" accept="image/*">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn-verde" id="btnGuardarMascota">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL AGREGAR PRODUCTO/SERVICIO -->
+    <div class="modal fade" id="addProductoModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar Producto/Servicio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formProducto">
+                        <div class="mb-3">
+                            <label class="form-label">Tipo</label>
+                            <select class="form-select" required>
+                                <option value="">Seleccionar...</option>
+                                <option value="producto">Producto</option>
+                                <option value="servicio">Servicio</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Precio</label>
+                            <input type="number" class="form-control" placeholder="$">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Imagen</label>
+                            <input type="file" class="form-control" accept="image/*">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn-verde" id="btnGuardarProducto">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="paneladmin.js"></script>
+</body>
+</html>

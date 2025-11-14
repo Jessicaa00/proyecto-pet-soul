@@ -20,6 +20,11 @@
             <img src="../logo/petSoulSVG.svg" alt="Logo Pet Soul">
         </div>
 
+        <!-- Botón hamburguesa -->
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menú">
+            <i class="bi bi-list"></i>
+        </button>
+
         <nav class="menu d-flex gap-3">
             <a href="index.html" class="active">Inicio</a>
             <a href="../mascotas/mascota.html">Mascota</a>
@@ -32,7 +37,7 @@
             <!-- mensajes -->
             <div class="dropdown">
                 <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-chat-dots fs-4"></i>
+                    <i class="bi bi-chat-dots"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end p-2" style="min-width: 250px;">
                     <li><strong class="dropdown-header">Mensajes</strong></li>
@@ -41,14 +46,14 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item text-center" href="#">Ver todos</a></li>
+                    <li><a class="dropdown-item text-center" href="../mensajes/mensajes.html">Ver todos</a></li>
                 </ul>
             </div>
 
             <!-- notificaciones -->
             <div class="dropdown">
                 <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-bell fs-4 position-relative"></i>
+                    <i class="bi bi-bell position-relative"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end p-2" style="min-width: 250px;">
                     <li><strong class="dropdown-header">Notificaciones</strong></li>
@@ -65,7 +70,7 @@
             <div class="dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    <i class="bi bi-person-circle fs-4"></i>
+                    <i class="bi bi-person-circle"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li><a class="dropdown-item" href="../login/login.html">Login</a></li>
@@ -81,39 +86,17 @@
         <h2>Adoptá. Amá. Cambiá una vida...</h2>
     </section>
 
-
-
     <!-- mascotas -->
-    <div class="container my-5">
-        <div class="row justify-content-center" id="pet-container">
-            <div class="col-md-4 col-lg-3 mb-4 d-none">
-                <div class="card h-100 pet-card">
-                    <img src="" class="card-img-top" alt="Mascota">
-                    <div class="card-overlay text-center">
-                        <span class="badge mb-2 estado"></span>
-                        <h5 class="card-title"></h5>
-                        <ul>
-                            <li><strong>Nombre:</strong> <span class="nombre"></span></li>
-                            <li><strong>Edad:</strong> <span class="edad"></span></li>
-                            <li><strong>Sexo:</strong> <span class="sexo"></span></li>
-                            <li><strong>Especie:</strong> <span class="especie"></span></li>
-                            <li><strong>Raza:</strong> <span class="raza"></span></li>
-                            <li><strong>Estado de salud:</strong> <span class="estado de salud"></span></li>
-                            <li><strong>Estado adopcion instituto:</strong> <span
-                                    class="estado adopcio instituto"></span></li>
-                            <li><strong>Instituto responsable:</strong> <span class="instituto responsable"></span></li>
-                        </ul>
-                        <button>Adoptar</button>
-                    </div>
-                </div>
-            </div>
+    <section class="container my-5">
+        <h2 class="text-center mb-4 nuevos-ingresos">Nuevos Ingresos</h2>
+        <div class="row justify-content-center" id="contenedorMascotas">
+            <!-- Las tarjetas se generan dinámicamente desde JS o MySQL -->
         </div>
-    </div>
-
-    <div class="text-center">
-        <a href="../mascotas/mascota.html" class="btn-comun">Ver más</a>
-    </div>
+        <div class="text-center my-4">
+            <a href="../mascotas/mascota.html" class="btn-comun">Ver más</a>
+        </div>
     </section>
+
 
     <!-- Base y Condiciones / Guía y Recursos -->
     <section class="info-section-clasico">
@@ -134,7 +117,6 @@
             <a href="../guia recursos/guia-recursos.html" class="btn-vermas">Ver más</a>
         </div>
     </section>
-
 
     <!-- footer -->
     <footer class="footer">

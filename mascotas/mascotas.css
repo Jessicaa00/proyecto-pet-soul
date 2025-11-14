@@ -1,40 +1,50 @@
-/* header */
+/* ===== HEADER ===== */
 .navbar-custom {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: #2e7d32;
     padding: 10px 20px;
-    height: 70px;  
+    height: 70px;
     z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
 }
 
 .logo {
     position: relative;
     height: 100%;
+    flex-shrink: 0;
 }
 
 .logo img {
-    height: 80px;     
+    height: 80px;
     width: auto;
-    position: absolute; 
-    top: 70%;         
+    position: absolute;
+    top: 70%;
     transform: translateY(-50%);
 }
 
 .menu {
     display: flex;
     gap: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .menu a {
     text-decoration: none;
     color: #ffffff;
     font-weight: 500;
+    white-space: nowrap;
 }
 
 .menu a:hover {
-    color: #f4c542;  
+    color: #f4c542;
 }
 
 .menu a.active {
@@ -44,33 +54,159 @@
 
 .icons {
     display: flex;
-    gap: 23px;
+    gap: 20px;
     font-size: 1.5rem;
+    align-items: center;
 }
 
 .icons i {
-    color: #ffffff;  
+    color: #ffffff;
     transition: color 0.3s;
+    font-size: 1.4rem;
 }
 
 .icons i:hover {
-    color: #f4c542;  
+    color: #f4c542;
 }
 
-/* hero */
+/* Botón hamburguesa (oculto por defecto) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    z-index: 1001;
+    transition: color 0.3s;
+}
+
+.menu-toggle:hover {
+    color: #f4c542;
+}
+
+.menu-toggle:focus {
+    outline: none;
+}
+
+/* ===== RESPONSIVE MÓVILES (hasta 768px) ===== */
+@media (max-width: 768px) {
+    .navbar-custom {
+        height: 60px;
+        padding: 10px 15px;
+        justify-content: space-between;
+    }
+    
+    /* OCULTAR logo en móvil */
+    .logo {
+        display: none;
+    }
+    
+    /* Botón hamburguesa a la izquierda */
+    .menu-toggle {
+        display: block;
+        position: relative;
+        order: 1;
+        margin-right: auto;
+        font-size: 1.8rem;
+    }
+    
+    /* Iconos visibles a la derecha */
+    .icons {
+        gap: 12px;
+        margin-left: auto;
+        order: 3;
+    }
+    
+    .icons i {
+        font-size: 1.3rem;
+    }
+    
+    /* Ajustar dropdowns en móvil */
+    .icons .dropdown-menu {
+        min-width: 220px !important;
+        font-size: 0.9rem;
+    }
+    
+    /* Menú desplegable móvil */
+    .menu {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        background: #2e7d32;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0;
+        gap: 0;
+        transform: none;
+        transition: height 0.3s ease-in-out, padding 0.3s ease-in-out;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .menu.active {
+        height: auto;
+        padding: 15px 0;
+    }
+    
+    .menu a {
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px;
+        font-size: 1.05rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: block;
+    }
+    
+    .menu a:first-child {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .menu a:last-child {
+        border-bottom: none;
+    }
+}
+
+/* ===== BODY ===== */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    padding-top: 70px;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+}
+
+/* ===== HERO ===== */
 .hero {
     position: relative;
-    min-height: 250px; 
+    min-height: 250px;
     background: url('https://plus.unsplash.com/premium_photo-1728545290865-cecc097be765?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 0;
 }
 
 .hero .overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.4); 
+    background: rgba(0, 0, 0, 0.4);
 }
 
 .hero h2 {
@@ -80,50 +216,20 @@
     color: white;
     font-size: 32px;
     text-align: center;
+    padding: 0 20px;
 }
 
-/* filtros */
-.filtros {
-  margin: 20px;
-  display: flex;
-  justify-content: center; 
+@media (max-width: 768px) {
+    .hero {
+        min-height: 200px;
+    }
+    
+    .hero h2 {
+        font-size: 24px;
+    }
 }
 
-.filtros-form {
-  display: flex;
-  gap: 15px; 
-  align-items: flex-end;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.form-group select,
-.form-group button {
-  padding: 6px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button.btn-filtrar {
-  background-color:lightgray;
-  color: rgb(0, 0, 0);
-  border: none;
-  cursor: pointer;
-}
-
-button.btn-filtrar:hover {
-  background-color:rgb(202, 202, 202);
-}
-
-/* botones */
+/* ===== BADGES ===== */
 .badge {
     display: inline-block;
     padding: 4px 8px;
@@ -136,15 +242,17 @@ button.btn-filtrar:hover {
     text-align: center;
 }
 
-/* tarjetas*/
+/* ===== PET CARDS===== */
 .pet-card {
     position: relative;
     overflow: hidden;
     border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: transform 0.3s, box-shadow 0.3s;
-    width: 100%;
-    min-height: 330px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s, box-shadow 0.3s, height 0.3s ease-in-out; 
+    width: 100%; 
+    max-width: 320px; 
+    margin: 0 auto; 
+    height: 330px; 
 }
 
 .pet-card img {
@@ -155,78 +263,98 @@ button.btn-filtrar:hover {
 
 .pet-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    height: 420px; 
 }
 
+/* Estilos de la capa oscura (Overlay) */
 .card-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.9);
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.9);
     color: #fff;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; 
     align-items: center;
     opacity: 0;
     transition: opacity 0.3s;
-    padding: 15px;
-    text-align: center;
+    padding: 20px 15px; 
+    text-align: left; 
+    overflow-y: hidden; 
 }
 
 .pet-card:hover .card-overlay {
     opacity: 1;
 }
 
+/* Contenido del Overlay */
+.card-overlay h5 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.card-overlay .descripcion-corta {
+    margin-bottom: 15px;
+    font-style: italic;
+    font-size: 0.95rem;
+    width: 100%;
+}
+
 .card-overlay ul {
     list-style: none;
     padding: 0;
     margin-bottom: 15px;
+    width: 100%;
 }
 
 .card-overlay ul li {
-    margin: 5px 0;
-    font-size: 0.95rem;
+    margin: 4px 0;
+    font-size: 0.9rem; 
 }
 
 .card-overlay button {
     border-radius: 25px;
     padding: 8px 20px;
     font-weight: bold;
-    background-color: #ff6b6b;
+    background-color: #2ecc71;
     border: none;
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-top: auto; 
 }
 
 .card-overlay button:hover {
     background-color: #2ecc71;
 }
-
-
-/*boton ver mas tarjetas*/
+/* ===== BOTÓN VER MÁS ===== */
 .btn-ver-mas {
     padding: 10px 25px;
-    background-color: lightgrey; 
-    color: #000000; 
+    background-color: grey;
+    color: #ffffff;
     border: none;
     border-radius: 8px;
     font-size: 1rem;
-    font-weight: none;
+    font-weight: normal;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
 
 .btn-ver-mas:hover {
-    background-color: rgb(114, 114, 114);
-    transform: translateY(-2px); 
-
+    background-color:grey;
+    color: white;
+    transform: translateY(-2px);
 }
 
+/* ===== FOOTER ===== */
 .footer {
+    margin-top: auto;
     background: #777;
     color: #fff;
     padding: 15px 20px;
@@ -239,6 +367,7 @@ button.btn-filtrar:hover {
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
+    flex-wrap: wrap;
 }
 
 .footer-logo img {
@@ -262,4 +391,27 @@ button.btn-filtrar:hover {
     font-size: 1.2rem;
 }
 
+.footer-social a:hover {
+    color: #f4c542;
+}
 
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .footer-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .footer-menu a {
+        margin: 0;
+    }
+    
+    .footer-logo img {
+        height: 40px;
+    }
+}

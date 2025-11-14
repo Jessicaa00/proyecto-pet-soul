@@ -19,9 +19,14 @@
       <img src="../logo/petSoulSVG.svg" alt="Logo Pet Soul">
     </div>
 
+    <!-- Botón hamburguesa -->
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menú">
+      <i class="bi bi-list"></i>
+    </button>
+
     <nav class="menu d-flex gap-3">
       <a href="../index.html">Inicio</a>
-      <a href="mascotas.html" class="active">Mascota</a>
+      <a href="../mascotas/mascota.html" class="active">Mascota</a>
       <a href="../foro/foro.html">Foro</a>
       <a href="../institucion/institucion.html">Institución</a>
       <a href="../casos exito/casosexito.html">Casos de Éxito</a>
@@ -31,7 +36,7 @@
       <!-- mensajes -->
       <div class="dropdown">
         <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="bi bi-chat-dots fs-4"></i>
+          <i class="bi bi-chat-dots"></i>
         </a>
         <ul class="dropdown-menu dropdown-menu-end p-2" style="min-width: 250px;">
           <li><strong class="dropdown-header">Mensajes</strong></li>
@@ -40,14 +45,14 @@
           <li>
             <hr class="dropdown-divider">
           </li>
-          <li><a class="dropdown-item text-center" href="#">Ver todos</a></li>
+          <li><a class="dropdown-item text-center" href="../mensajes/mensajes.html">Ver todos</a></li>
         </ul>
       </div>
 
       <!-- notificaciones -->
       <div class="dropdown">
         <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="bi bi-bell fs-4 position-relative"></i>
+          <i class="bi bi-bell position-relative"></i>
         </a>
         <ul class="dropdown-menu dropdown-menu-end p-2" style="min-width: 250px;">
           <li><strong class="dropdown-header">Notificaciones</strong></li>
@@ -63,7 +68,7 @@
       <!-- usuario -->
       <div class="dropdown">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="bi bi-person-circle fs-4"></i>
+          <i class="bi bi-person-circle"></i>
         </a>
         <ul class="dropdown-menu dropdown-menu-end">
           <li><a class="dropdown-item" href="../login/login.html">Login</a></li>
@@ -73,6 +78,7 @@
     </div>
   </header>
 
+
   <!-- hero -->
   <section class="hero">
     <div class="overlay"></div>
@@ -80,65 +86,44 @@
   </section>
 
   <!-- filtros -->
-  <section class="filtros">
-    <form class="filtros-form">
-      <div class="form-group">
-        <label for="especie">Especie</label>
-        <select id="especie">
+  <section class="container my-4">
+    <form class="row g-3 align-items-end" id="formFiltros">
+      <div class="col-md-3">
+        <label for="especie" class="form-label">Especie</label>
+        <select id="especie" class="form-select">
           <option value="">Todas</option>
           <option value="perro">Perro</option>
           <option value="gato">Gato</option>
         </select>
       </div>
-      <div class="form-group">
-        <label for="tamaño">Tamaño</label>
-        <select id="tamaño">
+      <div class="col-md-3">
+        <label for="tamaño" class="form-label">Tamaño</label>
+        <select id="tamaño" class="form-select">
           <option value="">Todos</option>
           <option value="pequeno">Pequeño</option>
           <option value="medio">Medio</option>
           <option value="grande">Grande</option>
         </select>
       </div>
-      <div class="form-group">
-        <label for="edad">Edad</label>
-        <select id="edad">
+      <div class="col-md-3">
+        <label for="edad" class="form-label">Edad</label>
+        <select id="edad" class="form-select">
           <option value="">Todas</option>
           <option value="cachorro">Cachorro</option>
           <option value="adulto">Adulto</option>
-          <option value="senior">Senior</option>
+          <option value="senior">Señor</option>
         </select>
       </div>
-      <div class="form-group">
-        <button type="submit" class="btn-filtrar">Filtrar</button>
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-dark w-100">Filtrar</button>
       </div>
     </form>
   </section>
 
-  <!-- mascotas -->
-  <section class="mascotas-container container my-5">
-    <div class="row" id="pet-container">
-      <div class="col-md-4 col-lg-3 mb-4 d-none template">
-        <div class="pet-card">
-          <img src="" alt="Mascota">
-          <div class="pet-info text-center">
-            <h5 class="nombre">Nombre Mascota</h5>
-            <span class="badge estado">Disponible</span>
-          </div>
-          <div class="card-overlay">
-            <h5 class="card-title nombre-hover">Nombre Mascota</h5>
-            <ul>
-              <li><strong>Edad:</strong> <span class="edad"></span></li>
-              <li><strong>Sexo:</strong> <span class="sexo"></span></li>
-              <li><strong>Especie:</strong> <span class="especie"></span></li>
-              <li><strong>Raza:</strong> <span class="raza"></span></li>
-              <li><strong>Estado de salud:</strong> <span class="estado-salud"></span></li>
-              <li><strong>Estado adopción:</strong> <span class="estado-adopcion"></span></li>
-              <li><strong>Instituto:</strong> <span class="instituto-responsable"></span></li>
-            </ul>
-            <button class="btn-adoptar">Adoptar</button>
-          </div>
-        </div>
-      </div>
+  <!-- TARJETAS -->
+  <section class="container my-5">
+    <div class="row justify-content-center" id="contenedorMascotas">
+      <!-- Las tarjetas se generan aquí dinámicamente desde MySQL -->
     </div>
     <div class="text-center my-4">
       <button class="btn-ver-mas">Ver más</button>

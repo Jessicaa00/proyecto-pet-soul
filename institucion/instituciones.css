@@ -1,17 +1,49 @@
-/* header*/
+/* ===== VARIABLES ===== */
+:root {
+    --verde-principal: #2e7d32;
+    --amarillo: #f4c542;
+    --gris-claro: #f8f9fa;
+}
+
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: white;
+    padding-top: 70px;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+}
+
+/* ===== HEADER ===== */
 .navbar-custom {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #2e7d32;
+    background: var(--verde-principal);
     padding: 10px 20px;
     height: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     z-index: 1000;
 }
 
 .logo {
     position: relative;
     height: 100%;
+    flex-shrink: 0;
 }
 
 .logo img {
@@ -25,236 +57,213 @@
 .menu {
     display: flex;
     gap: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .menu a {
     text-decoration: none;
     color: #ffffff;
-    font-weight: 500;
+    font-weight: bold;
+    white-space: nowrap;
 }
 
 .menu a:hover {
-    color: #f4c542;
+    color: var(--amarillo);
 }
 
 .menu a.active {
     color: #ffd740;
-    font-weight: bold;
+    font-weight: 700;
 }
-
 
 .icons {
     display: flex;
-    gap: 23px;
-    font-size: 1.5rem;
+    gap: 20px;
+    align-items: center;
 }
 
 .icons i {
-    color: #ffffff;
+    color: white;
+    font-size: 1.4rem;
     transition: color 0.3s;
 }
 
 .icons i:hover {
-    color: #f4c542;
+    color: var(--amarillo);
 }
 
-
-.hero-institution {
-    position: relative;
-    min-height: 250px;
-    background: url('https://images.unsplash.com/photo-1625106828405-07e0e4457c1a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHJlZnVnaW8lMjBhbmltYWx8ZW58MHx8MHx8fDA%3D') center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero-institution .overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-}
-
-.hero-institution .content {
-    position: relative;
-    text-align: center;
+/* Botón hamburguesa */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
     color: white;
-    max-width: 700px;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.menu-toggle:hover {
+    color: var(--amarillo);
+}
+
+@media (max-width: 768px) {
+    .navbar-custom {
+        height: 60px;
+        padding: 10px 15px;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+        order: 1;
+        margin-right: auto;
+    }
+
+    .icons {
+        order: 3;
+        gap: 12px;
+    }
+
+    .menu {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: var(--verde-principal);
+        flex-direction: column;
+        overflow: hidden;
+        padding: 0;
+        gap: 0;
+        transition: height 0.3s ease, padding 0.3s ease;
+    }
+
+    .menu.active {
+        height: auto;
+        padding: 15px 0;
+    }
+
+    .menu a {
+        width: 100%;
+        padding: 14px 20px;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+}
+
+/* ===== CONTENIDO PRINCIPAL ===== */
+.main-container {
+    max-width: 1200px;
+    margin: 20px auto 50px;
     padding: 0 20px;
 }
 
-.hero-institution h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+/* INTRO */
+.intro-section {
+    background: white;
+    border: 2px solid #a7a7a7;
+    padding: 30px;
+    margin-bottom: 30px;
 }
 
-.hero-institution p {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-}
-
-.hero-institution a {
-    background-color: #f59e0b;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 7px;
-    font-size: 1rem;
-    text-decoration: none;
-    display: inline-block;
-    transition: 0.3s;
-}
-
-.hero-institution a:hover {
-    background-color: #d89625;
-}
-
-
-/* tarjetas*/
-.pet-card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: transform 0.3s, box-shadow 0.3s;
-    width: 100%;
-    min-height: 330px;
-}
-
-.pet-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-}
-
-.pet-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-}
-
-.card-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.9);
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s;
-    padding: 15px;
-    text-align: center;
-}
-
-.pet-card:hover .card-overlay {
-    opacity: 1;
-}
-
-.card-overlay ul {
-    list-style: none;
-    padding: 0;
+.intro-section h2 {
+    font-size: 1.1rem;
     margin-bottom: 15px;
 }
 
-.card-overlay ul li {
-    margin: 5px 0;
-    font-size: 0.95rem;
+.intro-section h3 {
+    font-size: 1rem;
+    margin: 20px 0 15px;
 }
 
-.card-overlay button {
-    border-radius: 25px;
-    padding: 8px 20px;
-    font-weight: bold;
-    background-color: #ff6b6b;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s;
+/* ===== TABLA ===== */
+.institutions-table {
+    background: white;
+    border: 2px solid var(--verde-principal);
 }
 
-.card-overlay button:hover {
-    background-color: #2ecc71;
+.table-header {
+    display: grid;
+    grid-template-columns: 2.5fr 1.5fr 4fr 150px;
+    padding: 15px 20px;
+    border-bottom: 2px solid #ccc;
+    font-weight: 600;
 }
 
+.institution-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 3fr 1fr;
+    gap: 15px;
+    padding: 15px;
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    transition: background 0.2s;
+}
 
-/*boton*/
-.btn-comun {
-    padding: 10px 20px;
-    background-color: lightgray;
-    color: black;
+.institution-row:hover {
+    background: #f8f9fa; /* GRIS CLARO, no negro */
+}
+
+.institution-name {
+    font-weight: 600;
+}
+
+.institution-type {
+    color: #4b4b4b;
+}
+
+.institution-description {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* BOTÓN VER MÁS (DENTRO DE LA TABLA) */
+.btn-ver-mas {
+    background: var(--verde-principal);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
     text-decoration: none;
     display: inline-block;
-    border-radius: 4px;
-    font-weight: normal;
-    transition: background-color 0.3s;
 }
 
-.btn-comun:hover {
-    background-color: gray;
-    color: white;
+.btn-ver-mas:hover {
+    opacity: 0.85;
 }
 
-/* ===== FOOTER ===== */
-.footer {
-    background: #777;
-    color: #fff;
-    padding: 2px;
-    text-align: left;
-    width: 100%;
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.contact-item {
-    margin-bottom: 5px;
-}
-
-.contact-item i {
-    margin-right: 6px;
-}
-
-.contact-item a {
-    color: white;
-    text-decoration: none;
-}
-
-.contact-item a:hover {
-    text-decoration: underline;
-}
-
-/* mapa */
-.map-container {
-    position: relative;
-}
-
-.map-container h4 {
-    color: white;
-    margin-bottom: 10px;
-}
-
-.map-container img.mapa {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    border-radius: 10px;
+/* BOTÓN "CARGAR MÁS" */
+#loadMoreBtn {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 25px auto;
+    padding: 12px 28px;
+    background: var(--verde-principal);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-body {
-    padding-top: 70px;
+#loadMoreBtn:hover {
+    opacity: 0.85;
+}
+
+/* Responsive tabla */
+@media (max-width: 768px) {
+    .table-header,
+    .institution-row {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-ver-mas {
+        width: 100%;
+    }
 }

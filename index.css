@@ -3,65 +3,193 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background:#2e7d32;
+    background: #2e7d32;
     padding: 10px 20px;
-    height: 70px;  
+    height: 70px;
     z-index: 1000;
     margin-bottom: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
 }
 
 .logo {
     position: relative;
     height: 100%;
+    flex-shrink: 0;
 }
-                                                                                                                                                                                                                             
+
 .logo img {
-    height: 80px;     
+    height: 80px;
     width: auto;
-    position: absolute; 
-    top: 70%;         
+    position: absolute;
+    top: 70%;
     transform: translateY(-50%);
 }
-            
+
 .menu {
     display: flex;
     gap: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
+
 .menu a {
     text-decoration: none;
-    color: #ffffff;                   
-    font-weight: 500;
-}
-
-.menu a:hover {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
-    color: #f4c542;              
-}
-                                                                             
-.menu a.active {                                   
-    color: #ffd740;
+    color: #ffffff;
     font-weight: bold;
+    white-space: nowrap;
 }
 
+.menu a:hover {
+    color: #f4c542;
+}
+
+.menu a.active {
+    color: #ffd740;
+    font-weight: 700;
+}
 
 .icons {
     display: flex;
-    gap: 23px;
+    gap: 20px;
     font-size: 1.5rem;
+    align-items: center;
 }
 
 .icons i {
-    color: #ffffff;  
+    color: #ffffff;
     transition: color 0.3s;
+    font-size: 1.4rem;
 }
 
 .icons i:hover {
-    color: #f4c542;  
+    color: #f4c542;
 }
 
+/* Botón hamburguesa (oculto por defecto) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    z-index: 1001;
+    transition: color 0.3s;
+}
+
+.menu-toggle:hover {
+    color: #f4c542;
+}
+
+.menu-toggle:focus {
+    outline: none;
+}
+
+/* ===== RESPONSIVE SOLO PARA MÓVILES (hasta 768px) ===== */
+@media (max-width: 768px) {
+    .navbar-custom {
+        height: 60px;
+        padding: 10px 15px;
+        justify-content: space-between;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: relative;
+        order: 1;
+        margin-right: auto;
+        font-size: 1.8rem;
+    }
+
+    .icons {
+        gap: 12px;
+        margin-left: auto;
+        order: 3;
+    }
+
+    .icons i {
+        font-size: 1.3rem;
+    }
+
+    .icons .dropdown-menu {
+        min-width: 220px !important;
+        font-size: 0.9rem;
+    }
+
+    .menu {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        background: #2e7d32;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0;
+        gap: 0;
+        transform: none;
+        transition: height 0.3s ease-in-out, padding 0.3s ease-in-out;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .menu.active {
+        height: auto;
+        padding: 15px 0;
+    }
+
+    .menu a {
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px;
+        font-size: 1.05rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: block;
+    }
+
+    .menu a:first-child {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu a:last-child {
+        border-bottom: none;
+    }
+}
+
+/* ===== BODY ===== */
+body {
+    margin: 0;
+    padding: 0;
+    padding-top: 70px;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+}
+
+/* ===== HERO ===== */
 .hero {
     position: relative;
     min-height: 250px;
-    background: url('https://plus.unsplash.com/premium_photo-1664371674939-d3ff57800903?q=80&w=869&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')  center/cover no-repeat;
+    background: url('https://plus.unsplash.com/premium_photo-1664371674939-d3ff57800903?q=80&w=869&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,7 +198,7 @@
 .hero .overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.4);
 }
 
 .hero h2 {
@@ -80,26 +208,31 @@
     color: white;
     font-size: 32px;
     text-align: center;
+    padding: 0 20px;
 }
 
-.hero-img {
-    height: 250px;
-    object-fit: cover;
+@media (max-width: 768px) {
+    .hero {
+        min-height: 200px;
+    }
+
+    .hero h2 {
+        font-size: 24px;
+    }
 }
 
-.hero-overlay {
-    background: rgba(0,0,0,0.35);
-}
-
-/* tarjetas*/
+/* ===== PET CARDS (Ajustado) ===== */
 .pet-card {
     position: relative;
     overflow: hidden;
     border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     width: 100%;
-    min-height: 330px;
+    max-width: 320px;
+    /* QUITAMOS margin: 10px auto; para usar el centrado y espaciado de las clases de Bootstrap (col-md-4, mb-4) */
+    height: 330px;
+    transition: transform 0.3s, box-shadow 0.3s, height 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .pet-card img {
@@ -110,8 +243,46 @@
 
 .pet-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    height: 420px;
 }
+
+.pet-info {
+    padding: 10px;
+    background: #fff;
+    text-align: center;
+}
+
+.pet-info h5 {
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.pet-info p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.estado {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #fff;
+}
+/* Tu CSS original solo define estas dos clases, pero el JS usa color inline para En proceso */
+/* .Disponible {
+    background-color: #2e7d32;
+}
+
+.Adoptado {
+    background-color: #d32f2f;
+} */
+
 
 .card-overlay {
     position: absolute;
@@ -123,106 +294,145 @@
     color: #fff;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     opacity: 0;
     transition: opacity 0.3s;
-    padding: 15px;
-    text-align: center;
+    padding: 20px 15px;
+    text-align: left;
+    overflow-y: hidden; /* Importante para el hover */
 }
 
 .pet-card:hover .card-overlay {
     opacity: 1;
 }
 
+.card-overlay h5 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+/* ESTILO AGREGADO PARA LA DESCRIPCIÓN CORTA */
+.card-overlay .descripcion-corta {
+    margin-bottom: 15px;
+    font-style: italic;
+    font-size: 0.95rem;
+    width: 100%;
+    text-align: center;
+}
+
 .card-overlay ul {
     list-style: none;
     padding: 0;
-    margin-bottom: 15px;
+    margin: 0 0 15px 0;
+    width: 100%;
 }
 
 .card-overlay ul li {
-    margin: 5px 0;
-    font-size: 0.95rem;
+    margin: 4px 0;
+    font-size: 0.9rem;
 }
 
 .card-overlay button {
     border-radius: 25px;
     padding: 8px 20px;
     font-weight: bold;
-    background-color: #ff6b6b;
+    background-color: #2ecc71; 
     border: none;
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-top: auto;
+    display: block;
 }
 
 .card-overlay button:hover {
     background-color: #2ecc71;
 }
 
+@media (max-width: 768px) {
+    .pet-card:hover {
+        height: 330px;
+    }
+    .card-overlay {
+        opacity: 0;
+    }
+    .pet-card.active .card-overlay {
+        opacity: 1;
+        height: 100%;
+    }
+}
+
+/* ===== BOTONES ===== */
 .btn-comun {
     padding: 10px 20px;
-    background-color: lightgray;
-    color: black;
+    background-color: gray;
+    color: #ffffff;
     text-decoration: none;
-    display: inline-block; 
+    display: inline-block;
     border-radius: 4px;
     font-weight: normal;
     transition: background-color 0.3s;
 }
 
 .btn-comun:hover {
-    background-color: gray;
+    background-color:gray;
     color: white;
 }
 
+.btn-vermas {
+    display: inline-block;
+    background-color: #f59e0b;
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+}
+
+.btn-vermas:hover {
+    background-color: #d97706;
+}
+
+/* ===== INFO SECTION ===== */
 .info-section-clasico {
-  display: flex;
-  flex-direction: column; 
-  align-items: center;
-  gap: 25px;
-  padding: 60px 20px;
-  background-color: #fdfdfd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 60px 20px;
+    background-color: #fdfdfd;
 }
 
 .info-card {
-  width: 90%;
-  max-width: 600px;
-  background-color: #fff;
-  border: 1px solid #dcdcdc;
-  border-radius: 10px;
-  text-align: center;
-  padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    background-color: #fff;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
 }
 
 .info-card h3 {
-  font-family: 'Arial', sans-serif; 
-  font-size: 1.5rem;
-  color: #333; 
-  margin-bottom: 10px;
+    font-family: 'Arial', sans-serif;
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
 }
 
 .info-card p {
-  font-family: 'Arial', sans-serif;
-  font-size: 1rem;
-  color: #444;
-  line-height: 1.5;
-  margin-bottom: 15px;
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.5;
+    margin-bottom: 15px;
 }
 
-.btn-vermas {
-  display: inline-block;
-  background-color: #f59e0b; 
-  color: white;
-  text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: bold;
-  font-family: 'Arial', sans-serif;
-}
-
-
+/* ===== FOOTER ===== */
 .footer {
     background: #777;
     color: #fff;
@@ -236,6 +446,7 @@
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
+    flex-wrap: wrap;
 }
 
 .footer-logo img {
@@ -259,13 +470,29 @@
     font-size: 1.2rem;
 }
 
+.footer-social a:hover {
+    color: #f4c542;
+}
+
 .footer-copy {
     margin-top: 10px;
     font-size: 0.85rem;
     color: #e9e3e3;
 }
 
-body {
-    padding-top: 70px; 
-}
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 15px;
+    }
 
+    .footer-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .footer-menu a {
+        margin: 0;
+    }
+}

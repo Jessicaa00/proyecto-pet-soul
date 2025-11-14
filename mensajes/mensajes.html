@@ -10,34 +10,75 @@
 </head>
 <body>
 
-<div class="container my-5 chat-container">
-  <div class="row">
+<nav class="navbar navbar-light bg-light px-3 border-bottom">
+  <a href="../index.html" class="btn btn-outline-primary">
+    <i class="bi bi-house-door"></i> Volver al inicio
+  </a>
+  <span class="navbar-brand mb-0 h1 mx-auto">Mensajes - Pet Soul</span>
+</nav>
 
-    <!-- LISTA DE CHATS -->
-    <div class="col-md-4 chat-list p-0" id="chat-list-container">
-      <h5 class="p-3 bg-primary text-white">Chats</h5>
-      <ul class="list-group list-group-flush" id="chat-list">
-        <li class="list-group-item chat-item" data-name="Refugio Peluditos" data-last="10:30">Refugio Peluditos<br><small class="text-muted">Hola! ¿Estás interesado?</small></li>
-        <li class="list-group-item chat-item" data-name="Institución Animal" data-last="09:15">Institución Animal<br><small class="text-muted">Tenemos gatos jóvenes disponibles</small></li>
-        <li class="list-group-item chat-item" data-name="Refugio Canino" data-last="08:50">Refugio Canino<br><small class="text-muted">Cachorro listo para adopción</small></li>
-      </ul>
-    </div>
+<div class="container-fluid my-5">
+  <div class="row chat-container-wrapper">
 
-    <!-- VISTA DE CONVERSACIÓN -->
-    <div class="col-md-8 chat-box d-flex flex-column p-0 d-none" id="chat-box-container">
-      <div class="chat-header p-3 bg-light border-bottom d-flex align-items-center">
-        <button class="btn btn-light me-2" id="back-btn"><i class="bi bi-arrow-left"></i></button>
-        <h5 id="chat-title" class="mb-0">Selecciona un chat</h5>
-      </div>
-      <div class="chat-messages flex-grow-1 p-3" id="chat-messages">
-        <p class="text-muted">Aquí aparecerán los mensajes...</p>
-      </div>
-      <div class="chat-input p-3 border-top">
-        <div class="input-group">
-          <input type="text" id="message-input" class="form-control" placeholder="Escribe un mensaje...">
-          <button class="btn btn-primary" id="send-btn"><i class="bi bi-send"></i></button>
+    <div class="col-md-4 p-0 chat-list-wrapper" id="chat-list-container">
+      <div class="chat-list-fixed">
+        <h5 class="p-3 bg-primary text-white m-0">Chats</h5>
+        <div class="chat-list-scroll">
+          <ul class="list-group list-group-flush" id="chat-list">
+            <li class="list-group-item chat-item" data-name="Refugio Peluditos" data-last="10:30">
+              <strong>Refugio Peluditos</strong><br>
+              <small class="text-muted">Hola! ¿Estás interesado?</small>
+            </li>
+            <li class="list-group-item chat-item" data-name="Institución Animal" data-last="09:15">
+              <strong>Institución Animal</strong><br>
+              <small class="text-muted">Tenemos gatos jóvenes disponibles</small>
+            </li>
+            <li class="list-group-item chat-item" data-name="Refugio Canino" data-last="08:50">
+              <strong>Refugio Canino</strong><br>
+              <small class="text-muted">Cachorro listo para adopción</small>
+            </li>
+          </ul>
         </div>
       </div>
+    </div>
+
+    <div class="col-md-8 p-0 chat-box-wrapper d-none" id="chat-box-container">
+      <div class="chat-box-fixed">
+        <div class="chat-header p-3 bg-light border-bottom d-flex align-items-center">
+          <button class="btn btn-light me-2" id="back-btn">
+            <i class="bi bi-arrow-left"></i>
+          </button>
+          <h5 id="chat-title" class="mb-0">Selecciona un chat</h5>
+        </div>
+        <div class="chat-messages-scroll empty" id="chat-messages">
+          <p class="text-muted text-center mt-4">Selecciona un chat para comenzar 🐾</p>
+        </div>
+        
+        <div class="chat-input p-3 border-top">
+          <div class="input-group">
+            <input type="text" id="message-input" class="form-control" placeholder="Escribe un mensaje...">
+            
+            <button class="btn btn-outline-secondary" type="button" id="attach-btn" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-paperclip"></i>
+            </button>
+            
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="attach-btn">
+              <li>
+                <a class="dropdown-item" href="#" id="send-photo-btn">
+                  <i class="bi bi-image me-2"></i> Foto
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" id="send-doc-btn">
+                  <i class="bi bi-file-earmark-text me-2"></i> Documento
+                </a>
+              </li>
+            </ul>
+            
+            <button class="btn btn-primary" id="send-btn"><i class="bi bi-send"></i></button>
+          </div>
+        </div>
+        </div>
     </div>
 
   </div>

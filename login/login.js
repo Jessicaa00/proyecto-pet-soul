@@ -15,18 +15,19 @@ form.addEventListener("submit", function (e) {
     }
 
     // Consulta al backend
-    fetch('https://petsoulbackend.ngrok.app/api/auth/login',{
+    fetch('https://petsoulbackend.ngrok.app/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email, password: password })
     })
     .then(res => res.json())
     .then(data => {
-        alert(data.message); // alerta original
+        console.log("Respuesta del backend:", data); 
+        alert(data.message || "Sin mensaje del servidor");
 
         if (data.success) { // login correcto
-            localStorage.setItem("email", email); // guardar email
-            window.location.href = "../index.html";    // redirigir al inicio
+            localStorage.setItem("email", email);
+            window.location.href = "../index.html"; // redirigir al inicio
         } else {
             if (errorMsg) errorMsg.style.display = "block"; // mostrar error en HTML
         }
