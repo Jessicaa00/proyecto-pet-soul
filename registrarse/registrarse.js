@@ -1,3 +1,7 @@
+// Inicializar la API client
+const api = new PetSoulAPI('https://petsoulbackend.ngrok.app');
+
+// Elementos del DOM
 const mostrarDatos = document.getElementById('mostrarDatos');
 const direccion = document.getElementById('direccion');
 const telefono = document.getElementById('telefono');
@@ -11,7 +15,7 @@ mostrarDatos.addEventListener('change', () => {
     incluirDatos = mostrarDatos.checked;
 });
 
-form.addEventListener('submit', function (e) {
+form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
     const password = passwordInput.value;
@@ -20,39 +24,37 @@ form.addEventListener('submit', function (e) {
     // Validación de contraseñas
     if (password !== confirmar) {
         alert("Las contraseñas no coinciden");
-        return; // Detiene el envío si no coinciden
+        return;
     }
 
-    const datosFormulario = {
+    // Preparar datos del usuario
+    const datosUsuario = {
         nombre: document.getElementById('username').value,
         email: document.getElementById('email').value,
-        password: password, // solo la contraseña principal
+        password: password,
         mostrarDatos: incluirDatos,
         direccion: direccion.value,
         telefono: telefono.value
     };
 
-    console.log("Datos enviados al backend:", datosFormulario);
+    console.log("Datos enviados al backend:", datosUsuario);
 
-    fetch('https://petsoulbackend.ngrok.app/api/auth/register', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(datosFormulario)
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Error al crear usuario');
-        }
-        return response.json();
-    })
-    .then(data => {
+    try {
+        // Usar el método register de la API
+        const response = await api.register(datosUsuario);
+        
+        console.log("Usuario creado:", response);
         alert('Usuario creado exitosamente');
+        
+        // Resetear formulario y redirigir
         form.reset();
         window.location.href = '../index.html';
-    })
-    .catch(error => {
-        alert('Hubo un error: ' + error.message);
-    });
+        
+    } catch (error) {
+        console.error("Error al registrar:", error);
+        
+        // Mostrar mensaje de error específico
+        const mensaje = error.message || 'Hubo un error al crear el usuario';
+        alert(mensaje);
+    }
 });
