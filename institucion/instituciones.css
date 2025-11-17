@@ -129,19 +129,23 @@ body {
         gap: 12px;
     }
 
-    .menu {
-        position: fixed;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        height: 0;
-        background: var(--verde-principal);
-        flex-direction: column;
-        overflow: hidden;
-        padding: 0;
-        gap: 0;
-        transition: height 0.3s ease, padding 0.3s ease;
-    }
+.menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    background: #2e7d32;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    gap: 0;
+    transform: none;
+    transition: height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* <---- IMPORTANTE */
+}
 
     .menu.active {
         height: auto;
@@ -153,6 +157,11 @@ body {
         padding: 14px 20px;
         text-align: center;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* 🔥 Arreglo: cuando el menú está abierto, empujo el contenido hacia abajo */
+    .menu.active ~ .main-container {
+        margin-top: 140px !important;
     }
 }
 
@@ -231,6 +240,7 @@ body {
     font-size: 14px;
     text-decoration: none;
     display: inline-block;
+    text-align: center;
 }
 
 .btn-ver-mas:hover {
@@ -261,9 +271,11 @@ body {
     .table-header,
     .institution-row {
         grid-template-columns: 1fr;
+        text-align: center;
     }
 
     .btn-ver-mas {
         width: 100%;
+        margin-top: 10px;
     }
 }

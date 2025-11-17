@@ -221,6 +221,23 @@ html {
     }
 }
 
+/* ===== ARREGLO RESPONSIVE PARA CENTRAR TARJETAS ===== */
+.pet-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  /* Centra horizontalmente */
+    gap: 20px;                /* Espacio entre tarjetas */
+    width: 100%;
+}
+
+/* Para pantallas pequeñas */
+@media (max-width: 768px) {
+    .pet-card {
+        max-width: 90%;      /* Que no se achique demasiado */
+        margin: 0 auto;      /* Centrarlas */
+    }
+}
+
 /* ===== PET CARDS (Ajustado) ===== */
 .pet-card {
     position: relative;
