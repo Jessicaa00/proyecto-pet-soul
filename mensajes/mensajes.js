@@ -2,7 +2,7 @@
 // CONFIGURACIÓN DE API
 // ========================================
 
-const GROQ_API_KEY = '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';
+const GROQ_API_KEY = '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';
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
 // ========================================

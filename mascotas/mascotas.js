@@ -256,9 +256,9 @@ function renderizarMascotas(lista) {
     else if (m.estadoAdopcion.toLowerCase() === "adoptado") colorEstado = "#ff6b6b";
     else if (m.estadoAdopcion.toLowerCase() === "en proceso") colorEstado = "#f4c542";
 
-    const botonAdoptar = m.estadoAdopcion.toLowerCase() === "disponible" ?
-      `<button class="btn-adoptar">Adoptar</button>` :
-      `<span class="badge" style="background-color: #555;">No disponible</span>`;
+const botonAdoptar = m.estadoAdopcion.toLowerCase() === "disponible" ?
+  `<button class="btn-adoptar" onclick="adoptarMascota('${m.nombre}')">Adoptar</button>` :
+  `<span class="badge" style="background-color: #555;">No disponible</span>`;
 
     tarjeta.innerHTML = `
       <div class="pet-card">
@@ -363,6 +363,16 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+function adoptarMascota(nombreMascota) {
+    // Guardamos qué mascota quiere adoptar
+    localStorage.setItem("mascotaAdoptar", nombreMascota);
+
+    // Redirige a la página donde se completa la adopción
+    window.location.href = "../adopcion/adoptar.html";
+}
+
+
+
 // ===== MENU HAMBURGUESA =====
 function toggleMenu() {
   const menu = document.querySelector('.menu');
@@ -386,3 +396,8 @@ window.addEventListener('resize', () => {
     icon.classList.remove('bi-x');
   }
 });
+
+function adoptarMascota(nombreMascota) {
+  // Mensaje lindo tipo alerta
+  alert(`Tu solicitud para adoptar a ${nombreMascota} fue enviada a la institución 🐾`);
+}

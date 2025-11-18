@@ -294,3 +294,16 @@ window.addEventListener('resize', () => {
         icon.classList.add('bi-list');
     }
 });
+
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("verMasBtn")) {
+    const idSeleccionado = e.target.dataset.id;
+
+    // Guardar el ID en localStorage
+    localStorage.setItem("institucionSeleccionada", idSeleccionado);
+
+    // Redirigir a la página de detalle
+    window.location.href = "instituciones.html";
+  }
+});
+

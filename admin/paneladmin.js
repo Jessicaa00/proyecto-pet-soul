@@ -124,5 +124,7 @@ window.addEventListener('resize', () => {
             });
         }
 
+        
+
         console.log('Panel de institución Pet Soul cargado correctamente');
 

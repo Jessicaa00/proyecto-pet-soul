@@ -1,49 +1,26 @@
-// login.js simplificado
-const form = document.getElementById("form-login");
-const errorMsg = document.getElementById("errorMsg");
+const formLogin = document.getElementById('form-login');
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
 
-// Manejo del submit del login
-form.addEventListener("submit", function (e) {
-    e.preventDefault();
+if (formLogin) {
+    formLogin.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+        const email = emailInput.value.trim();
+        const password = passwordInput.value;
 
-    if (!email || !password) {
-        alert("Completa todos los campos");
-        return;
-    }
+        let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+        const usuario = usuarios.find(u => u.email === email && u.password === password);
 
-    // Consulta al backend
-    fetch('https://petsoulbackend.ngrok.app/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, password: password })
-    })
-    .then(res => res.json())
-    .then(data => {
-        console.log("Respuesta del backend:", data); 
-        alert(data.message || "Sin mensaje del servidor");
-
-        if (data.success) { // login correcto
-            localStorage.setItem("email", email);
-            window.location.href = "../index.html"; // redirigir al inicio
-        } else {
-            if (errorMsg) errorMsg.style.display = "block"; // mostrar error en HTML
+        if (!usuario) {
+            alert('Email o contraseña incorrectos');
+            return;
         }
-    })
-    .catch(err => {
-        alert("Error en el login");
-        console.error(err);
+
+        // Guardar usuario logueado
+        localStorage.setItem('usuarioLogueado', JSON.stringify(usuario));
+        alert(`¡Bienvenido, ${usuario.nombre}!`);
+        window.location.href = '../index.html';
     });
-});
+}
 
-// Mostrar la inicial en index.html
-window.addEventListener("DOMContentLoaded", () => {
-    const perfilDiv = document.getElementById("perfil");
-    const email = localStorage.getItem("email");
-
-    if (email && perfilDiv) {
-        perfilDiv.textContent = email.charAt(0).toUpperCase();
-    }
-});

@@ -1,15 +1,23 @@
-// Datos simulados (ejemplo)
-const usuarioLogueado = localStorage.getItem('usuario') || 'UsuarioEjemplo';
+/* ================================
+   USUARIO LOGUEADO REAL
+================================ */
+
+const usuarioData = JSON.parse(localStorage.getItem('usuarioLogueado'));
+const usuarioLogueado = usuarioData?.nombre || "UsuarioEjemplo";
+
 const mascotaAdoptada = localStorage.getItem('mascota') || 'Firulais';
 const fechaHoy = new Date().toLocaleDateString();
 
-// Mostrar datos en el formulario
 document.getElementById('usuario').textContent = usuarioLogueado;
 document.getElementById('nombreMascota').textContent = mascotaAdoptada;
 document.getElementById('fecha').textContent = fechaHoy;
 
-// Subir imagen
+
+/* ================================
+   SUBIR IMAGEN
+================================ */
 const uploadBox = document.querySelector('.upload-box input');
+
 uploadBox.addEventListener('change', (e) => {
     const fileName = e.target.files[0]?.name || '';
     if (fileName) {
@@ -17,35 +25,68 @@ uploadBox.addEventListener('change', (e) => {
     }
 });
 
-// Botón Crear
+
+/* ================================
+   CREAR EXPERIENCIA
+================================ */
 document.getElementById('btnCrear').addEventListener('click', (e) => {
     e.preventDefault();
-    
-    // Capturar experiencia
+
     const experiencia = document.querySelector('.form-box textarea').value;
-    
-    if(!experiencia) {
-        alert('Escribe tu experiencia antes de crear.');
+
+    if (!experiencia) {
+        alert("Escribe tu experiencia.");
         return;
     }
 
-    // Guardar experiencia (puede ser en localStorage, o enviarla a tu backend)
     const nuevaExperiencia = {
         usuario: usuarioLogueado,
         mascota: mascotaAdoptada,
         fecha: fechaHoy,
-        experiencia: experiencia
+        experiencia
     };
-    
-    // Ejemplo guardando en localStorage
+
     let experiencias = JSON.parse(localStorage.getItem('experiencias')) || [];
     experiencias.push(nuevaExperiencia);
     localStorage.setItem('experiencias', JSON.stringify(experiencias));
 
-    alert('¡Experiencia registrada!');
-    // Limpiar formulario
+    alert("¡Experiencia registrada!");
     document.querySelector('.form-box textarea').value = '';
     uploadBox.value = '';
+});
+
+
+/* ================================
+   NAVBAR — MENÚ HAMBURGUESA
+================================ */
+
+function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    const icon = document.querySelector('.menu-toggle i');
+
+    menu.classList.toggle('active');
+
+    if (menu.classList.contains('active')) {
+        icon.classList.replace('bi-list', 'bi-x');
+    } else {
+        icon.classList.replace('bi-x', 'bi-list');
+    }
+}
+
+document.querySelectorAll('.menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+            document.querySelector('.menu').classList.remove('active');
+            document.querySelector('.menu-toggle i').classList.replace('bi-x', 'bi-list');
+        }
+    });
+});
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        document.querySelector('.menu').classList.remove('active');
+        document.querySelector('.menu-toggle i').classList.replace('bi-x', 'bi-list');
+    }
 });
 
 

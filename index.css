@@ -371,13 +371,13 @@ html {
 
 @media (max-width: 768px) {
     .pet-card:hover {
-        height: 330px;
+        height: 330px; 
     }
     .card-overlay {
-        opacity: 0;
+        opacity: 0; 
     }
     .pet-card.active .card-overlay {
-        opacity: 1;
+        opacity: 1; 
         height: 100%;
     }
 }
@@ -513,3 +513,4 @@ html {
         margin: 0;
     }
 }
+
